@@ -8,9 +8,19 @@ import java.rmi.RemoteException;
 public class Client {
 
 	public static void main(String[] args) {
+		//establecer la IP del HOST
+		String ipHostDefault = "192.168.2.13";
+		String ipHost;
+		if(args.length == 1){
+			ipHost = args[0];
+		}else{
+			System.out.println("Warning: no se ha especificado la IP del HOST! (default = "+ipHostDefault+")");
+			ipHost = ipHostDefault;
+		}
+		
 		IDate date;
 		try {
-			date = (IDate) Naming.lookup("rmi://localhost:1099/dateServer");
+			date = (IDate) Naming.lookup("//"+ipHost+":1099/dateServer");
 			System.out.println("Date... " + date.currentDate());
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block

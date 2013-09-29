@@ -12,7 +12,7 @@ public class Client {
 
 		try {
 			IServer server = (IServer) Naming
-					.lookup("rmi://localhost:1099/server");
+					.lookup("//192.168.2.7:1099/server");
 			IPoint point = new Point();
 			point.setX(10);
 			System.out.println("x. " + point.getX());

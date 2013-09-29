@@ -15,6 +15,7 @@ public class Server extends UnicastRemoteObject implements IServer {
 
 	public static void main(String[] args) {
 		try {
+			System.setProperty("java.rmi.server.hostname", "192.168.2.7");
 			IServer server = new Server();
 			Naming.rebind("rmi://localhost:1099/server", server);
 		} catch (RemoteException e) {
